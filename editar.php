@@ -8,6 +8,7 @@ if ($conexion->connect_error) {
 }
 
 // Obtener el DNI enviado por el formulario
+$dni = $_POST['dni'];
 
 
 
