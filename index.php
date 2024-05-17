@@ -21,7 +21,7 @@
         <a href="materia.php" class="btn btn-primary">Cargar nuevo materia</a>
         <a href="modmateria.php" class="btn btn-primary">Listar materia</a>
         <a href="cursada.php" class="btn btn-primary">Cargar nuevo cursada</a>
-        <a href="modcursada.php" class="btn btn-primary">Listar cursadas</a>
+        <a href="listacursada.php" class="btn btn-primary">Listar cursadas</a>
     </ul>
 </nav>
 

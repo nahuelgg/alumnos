@@ -8,14 +8,9 @@
 <body>
     <h1 align="center">LISTADO DE MATERIA</h1>
 <?php
-// Conexión a la base de datos
- $servername = "localhost"; 
- $username = "root"; 
- $password = ""; 
- $dbname = "colegio"; 
 
  // Crear conexión
- $conn = new mysqli($servername, $username, $password, $dbname);
+ $conn = new mysqli("localhost", "root", "", "colegio");
 
  // Verificar la conexión
  if ($conn->connect_error) {

@@ -7,11 +7,11 @@
     <!-- Agregar Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Alumno</title>
+    <title>Materia</title>
 </head>
 <body>
     <div class="text-center pt-5 form-text">
-        <h1>Cargar un alumno</h1>
+        <h1>Cargar una Materia</h1>
     </div>
 
     <div class="container">

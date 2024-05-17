@@ -22,9 +22,11 @@
    
     $sql = "SELECT idmaterias , nombre FROM colegio.materias";
     $resultado = $conexion->query($sql);
+    $materia = $resultado->fetch_assoc();
 
     $sql2 = "SELECT id , nomyape FROM colegio.alumnos";
     $resultado2 = $conexion->query($sql2);
+    $alumnos = $resultado2->fetch_assoc();
     
 
 ?>
@@ -51,7 +53,7 @@
                         <select class="form-control" id="materia" name="materia">
                             <?php
                                 while($materia = $resultado->fetch_array()){
-                                echo '<option>' . $materia["idmaterias"] . '</option>';}
+                                echo '<option>' . $materia[0] . '</option>';}
                                 
                             ?>
 
