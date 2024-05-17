@@ -18,7 +18,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 
-                <form class="" action="cargar.php" method="post">
+                <form class="" action="" method="post">
                     
                     <div class="pt-3">
                         <h5>Nombre y apellido: </h5>
@@ -61,7 +61,7 @@
                         <h5>Telefono: </h5>
                         <input class="form-control" type="text" id="telefono"   name="telefono" value="">
                     </div>
-                    <div class="pt-3">
+                    <div class="pt-3 droo">
                         <input type="submit" value="Enviar" class="btn btn-primary">
                         <a href="index.php" class="btn btn-primary">Volver</a>
                     </div>
@@ -70,6 +70,54 @@
             </div>
         </div>
     </div>
+
+<?php
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    // Conexión a la base de datos
+    $servername = "localhost"; 
+    $username = "root"; 
+    $password = ""; 
+    $dbname = "colegio"; 
+
+    // Crear conexión
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Verificar la conexión
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+    }
+
+    // Recibir los datos del formulario
+    $dni = $_POST["dni"];
+    $fnacimiento = $_POST["fnacimiento"];
+    $nomyape = $_POST["nomyape"];
+    $ciudad = $_POST["ciudad"];
+    $domicilio = $_POST["domicilio"];
+    $mail = $_POST["mail"];
+    $genero = $_POST["genero"];
+    $telefono = $_POST["telefono"];
+
+    // Preparar la consulta SQL
+    $sql = "INSERT INTO colegio.alumnos(dni, fnacimiento, nomyape, ciudad, domicilio,  mail,  genero,  telefono) VALUES( '$dni','$fnacimiento', '$nomyape', '$ciudad', '$domicilio', '$mail', '$genero', '$telefono')";
+
+    // Ejecutar la consulta y verificar si fue exitosa
+    if ($conn->query($sql) === TRUE) {
+        echo "Nuevo alumno registrado correctamente";
+        header("Location: index.php");
+        // Cerrar la conexión
+        $conn->close();
+        exit; 
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+        // Cerrar la conexión
+        $conn->close();
+    }
+}
+
+
+
+?>
 
 </body>
 </html>

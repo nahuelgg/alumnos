@@ -18,8 +18,13 @@
         <a href="alumno.php" class="btn btn-primary">Cargar nuevo alumno</a>
         <a href="modificar.php" class="btn btn-primary">Modificar alumno</a>
         <a href="borrar.php" class="btn btn-primary">Borrar alumno</a>
+        <a href="materia.php" class="btn btn-primary">Cargar nuevo materia</a>
+        <a href="modmateria.php" class="btn btn-primary">Listar materia</a>
+        <a href="cursada.php" class="btn btn-primary">Cargar nuevo cursada</a>
+        <a href="listacursada.php" class="btn btn-primary">Listar cursadas</a>
     </ul>
 </nav>
 
 </body>
 </html>
+
