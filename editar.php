@@ -11,7 +11,6 @@ if ($conexion->connect_error) {
 $dni = $_POST['dni'];
 
 
-
 // Consulta para buscar al alumno por DNI
 $sql = "SELECT * FROM colegio.alumnos WHERE dni='$dni'";
 $resultado = $conexion->query($sql);
@@ -39,7 +38,7 @@ if ($resultado->num_rows > 0) {
         <div class="row justify-content-center">
             <div class="col-md-6">
                 
-                <form class="" action="guardarModificacion.php" method="post">
+                <form class="" action="" method="post">
                     
                     <div class="pt-3">
                         <h5>Nombre y apellido: </h5>
@@ -95,9 +94,40 @@ if ($resultado->num_rows > 0) {
 </body>
 </html>
 <?php
-} else {
-    echo "No se encontró ningún alumno con el DNI proporcionado.";
+} 
+
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+
+    // Obtener los datos del formulario
+        $dni = $_POST["dni"];
+        $fnacimiento = $_POST["fnacimiento"];
+        $nomyape = $_POST["nomyape"];
+        $ciudad = $_POST["ciudad"];
+        $domicilio = $_POST["domicilio"];
+        $mail = $_POST["mail"];
+        $genero = $_POST["genero"];
+        $telefono = $_POST["telefono"];
+
+    // Actualizar los datos del alumno en la base de datos
+    $sql = "UPDATE colegio.alumnos SET fnacimiento = '$fnacimiento', nomyape = '$nomyape', ciudad = '$ciudad', domicilio = '$domicilio',  mail = '$mail',  genero = '$genero',  telefono = '$telefono' WHERE dni=$dni";
+
+    if ($conexion->query($sql) === TRUE) {
+        echo "Los datos se actualizaron correctamente.";
+        header("Location: index.php");
+        // Cerrar la conexión
+        $conn->close();
+        exit; 
+
+    } else {
+        echo "Error al actualizar los datos: " . $conexion->error;
+    }
+
 }
-// Cerrar la conexión
-$conexion->close();
+
+    // Cerrar la conexión
+    $conexion->close();
+    $conn->close();
+    exit; 
 ?>

@@ -21,46 +21,28 @@
                 <form class="" action="" method="post">
                     
                     <div class="pt-3">
-                        <h5>Nombre y apellido: </h5>
-                        <input class="form-control" type="text" id="nomyape"  name="nomyape" value="">
+                        <h5>Nombre de la materia: </h5>
+                        <input class="form-control" type="text" id="nombre"  name="nombre" value="">
                     </div>
 
                     <div class="pt-3">
-                        <h5>DNI: </h5>
-                        <input class="form-control" type="number" id="dni" name="dni" value="" >
-                    </div>
-
-
-                    <div class="pt-3">
-                        <h5>Fecha de nacimiento: </h5>
-                        <input class="form-control" type="date" id="fnacimiento" name="fnacimiento" value=""  >
+                        <h5>cantidad_hs: </h5>
+                        <input class="form-control" type="number" id="cantidad_hs" name="cantidad_hs" value="" >
                     </div>
 
 
                     <div class="pt-3">
-                        <h5>Ciudad: </h5>
-                        <input class="form-control" type="text" id="ciudad"  name="ciudad" value="">
+                        <h5>tiene correlativas: </h5>
+                        <input class="form-control" type="text" id="tiene_correlativas" name="tiene_correlativas" value=""  >
                     </div>
 
-                    <div class="pt-3">
-                        <h5>Domicilio: </h5>
-                        <input class="form-control" type="text" id="domicilio"  name="domicilio"  value="">
-                    </div>
 
                     <div class="pt-3">
-                        <h5>Correo electronico: </h5>
-                        <input class="form-control" type="text" id="mail"  name="mail"  value="">
+                        <h5>curso: </h5>
+                        <input class="form-control" type="number" id="curso"  name="curso" value="">
                     </div>
 
-                    <div class="pt-3">
-                        <h5>Genero: </h5>
-                        <input class="form-control" type="text" id="genero"   name="genero"  value="">
-                    </div>
-
-                    <div class="pt-3">
-                        <h5>Telefono: </h5>
-                        <input class="form-control" type="text" id="telefono"   name="telefono" value="">
-                    </div>
+                    
                     <div class="pt-3 droo">
                         <input type="submit" value="Enviar" class="btn btn-primary">
                         <a href="index.php" class="btn btn-primary">Volver</a>
@@ -89,21 +71,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
 
     // Recibir los datos del formulario
-    $dni = $_POST["dni"];
-    $fnacimiento = $_POST["fnacimiento"];
-    $nomyape = $_POST["nomyape"];
-    $ciudad = $_POST["ciudad"];
-    $domicilio = $_POST["domicilio"];
-    $mail = $_POST["mail"];
-    $genero = $_POST["genero"];
-    $telefono = $_POST["telefono"];
+    $nombre = $_POST["nombre"];
+    $cantidad_hs = $_POST["cantidad_hs"];
+    $tiene_correlativas = $_POST["tiene_correlativas"];
+    $curso = $_POST["curso"];
 
     // Preparar la consulta SQL
-    $sql = "INSERT INTO colegio.alumnos(dni, fnacimiento, nomyape, ciudad, domicilio,  mail,  genero,  telefono) VALUES( '$dni','$fnacimiento', '$nomyape', '$ciudad', '$domicilio', '$mail', '$genero', '$telefono')";
+    $sql = "INSERT INTO colegio.materias(nombre , cantidad_hs, tiene_correlativas, curso) VALUES( '$nombre','$cantidad_hs', '$tiene_correlativas', '$curso')";
 
     // Ejecutar la consulta y verificar si fue exitosa
     if ($conn->query($sql) === TRUE) {
-        echo "Nuevo alumno registrado correctamente";
+        echo "Nueva materia registrada";
         header("Location: index.php");
         // Cerrar la conexión
         $conn->close();
